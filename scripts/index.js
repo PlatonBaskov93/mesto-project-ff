@@ -1,29 +1,29 @@
-const createCards = (cardsArr, deleteCard) => {
+const cardsList = document.querySelector('.places__list');
+
+const createCard = (cardTitleText, cardImageLink, deleteCard) => {
+
   const cardTemplate = document.querySelector('#card-template').content;
-  const createdCards = [];
+  const card = cardTemplate.querySelector('.card').cloneNode(true);
+  const cardTitle = card.querySelector('.card__title');
+  const cardImage = card.querySelector('.card__image');
+  const cardDeleteButton = card.querySelector('.card__delete-button');
 
-  cardsArr.forEach((item) => {
-    const card = cardTemplate.querySelector('.card').cloneNode(true);
-    card.querySelector('.card__title').textContent = item.name;
-    card.querySelector('.card__image').src = item.link;
-    card.querySelector('.card__delete-button').addEventListener('click', deleteCard);
-    createdCards.push(card);
-  })
+  cardTitle.textContent = cardTitleText;
+  cardImage.src = cardImageLink;
+  cardImage.alt = `Иллюстрация карточки. На картинке изображен ${cardTitleText}.`;
+  cardDeleteButton.addEventListener('click', () => deleteCard(card));
 
-  return createdCards;
-}
+  return card;
+};
 
-const deleteCard = (evt) => {
-  evt.target.parentElement.remove();
-}
+const deleteCard = (card) => {
+  card.remove();
+};
 
-const renderCards = () => {
-  const cardsList = document.querySelector('.places__list');
-  const cardsToRender = createCards(initialCards, deleteCard);
-  cardsToRender.forEach((item) => {
-    cardsList.append(item);
+const renderCards = (initialArr) => {
+  initialArr.forEach((item) => {
+    cardsList.append(createCard(item.name, item.link, deleteCard));
   });
+};
 
-}
-
-renderCards();
+renderCards(initialCards);

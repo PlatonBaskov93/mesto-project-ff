@@ -1,5 +1,3 @@
-import {imagePopup} from './index.js'
-
 function openPopup(popup) {
     popup.classList.add(`popup_is-opened`);
     popup.addEventListener(`mousedown`, closePopupByMouse);
@@ -23,11 +21,5 @@ function openPopup(popup) {
       closePopup(document.querySelector(`.popup_is-opened`));
     };
   };
-  
-  function openImagePopup(image) {
-     imagePopup.querySelector(`.popup__image`).src = image.src;
-     imagePopup.querySelector(`.popup__caption`).textContent = image.alt;
-     openPopup(imagePopup)
-  }
 
-  export {openPopup, openImagePopup, closePopup, closePopupByKey, closePopupByMouse}
+  export {openPopup, closePopup, closePopupByKey, closePopupByMouse}

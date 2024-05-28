@@ -1,10 +1,9 @@
-import {openImagePopup} from "./modal.js"
-import { cardsList } from "./index.js";
+
+const cardTemplate = document.querySelector(`#card-template`).content;
 
 function createCard(cardTitleText, cardImageLink, deleteCard, likeCard, openImagePopup){
 
-    const cardTemplate = document.querySelector(`#card-template`).content,
-          card = cardTemplate.querySelector(`.card`).cloneNode(true),
+    const card = cardTemplate.querySelector(`.card`).cloneNode(true),
           cardTitle = card.querySelector(`.card__title`),
           cardImage = card.querySelector(`.card__image`),
           cardDeleteButton = card.querySelector(`.card__delete-button`),
@@ -29,10 +28,4 @@ function createCard(cardTitleText, cardImageLink, deleteCard, likeCard, openImag
     likeButton.classList.toggle(`card__like-button_is-active`)
   }
 
-  function renderCards(initialArr) {
-    initialArr.forEach((item) => {
-      cardsList.append(createCard(item.name, item.link, deleteCard, likeCard, openImagePopup));
-    });
-  };
-
-  export {createCard, deleteCard, likeCard, renderCards}
+  export {createCard, deleteCard, likeCard}

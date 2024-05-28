@@ -1,3 +1,5 @@
+import '../pages/index.css'
+
 import {openPopup, openImagePopup, closePopup } from "./modal.js"
 import {createCard, renderCards, deleteCard, likeCard} from "./card.js"
 import initialCards from "./cards.js"

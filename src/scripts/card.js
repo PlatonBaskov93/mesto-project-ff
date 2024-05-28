@@ -1,9 +1,13 @@
 
 const cardTemplate = document.querySelector(`#card-template`).content;
 
-function createCard(cardTitleText, cardImageLink, deleteCard, likeCard, openImagePopup){
+function getCardTemplate(cardTemplate){
+  const cardClonedTemplate = cardTemplate.querySelector(`.card`).cloneNode(true);
+  return cardClonedTemplate;
+};
 
-    const card = cardTemplate.querySelector(`.card`).cloneNode(true),
+function createCard(cardTitleText, cardImageLink, deleteCard, likeCard, openImagePopup){
+    const card = getCardTemplate(cardTemplate),
           cardTitle = card.querySelector(`.card__title`),
           cardImage = card.querySelector(`.card__image`),
           cardDeleteButton = card.querySelector(`.card__delete-button`),
@@ -28,4 +32,4 @@ function createCard(cardTitleText, cardImageLink, deleteCard, likeCard, openImag
     likeButton.classList.toggle(`card__like-button_is-active`)
   }
 
-  export {createCard, deleteCard, likeCard}
+  export { createCard, deleteCard, likeCard }

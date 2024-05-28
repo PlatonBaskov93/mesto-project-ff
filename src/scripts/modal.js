@@ -22,4 +22,4 @@ function openPopup(popup) {
     };
   };
 
-  export {openPopup, closePopup, closePopupByKey, closePopupByMouse}
+  export { openPopup, closePopup, closePopupByKey, closePopupByMouse }
